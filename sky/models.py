@@ -5,7 +5,7 @@ from django.conf import settings
 User = settings.AUTH_USER_MODEL
 
 
-class Person(model.Model):
+class Person(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -17,8 +17,17 @@ class Person(model.Model):
 
 
 class Stuff (models.Model):
-    pass
+    title = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.title
 
 
 class Package(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    title = models.CharField(max_length=64)
+    description = models.TextField(max_length=1024)
+    stuffs = models.ForeignKey(Stuff, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return self.title
