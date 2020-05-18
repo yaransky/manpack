@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Stuff, Package, Person, PersonPackage
+
+admin.site.register(Stuff)
+admin.site.register(Package)
+admin.site.register(Person)
+admin.site.register(PersonPackage)
