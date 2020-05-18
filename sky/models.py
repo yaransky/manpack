@@ -48,7 +48,8 @@ class PersonPackage(models.Model):
 
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     package = models.ForeignKey(Package, on_delete=models.CASCADE)
-    distributor = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    distributor = models.ForeignKey(
+        User, on_delete=models.DO_NOTHING, null=True)
     created_at = models.DateTimeField(auto_now=True)
-    status = models.SmallIntegerField(choices=STATUS_CHOICES,
-                                      default=DISTRIBUTING)
+    status = models.SmallIntegerField(
+        choices=STATUS_CHOICES, default=DISTRIBUTING)
